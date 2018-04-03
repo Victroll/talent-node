@@ -1,0 +1,73 @@
+{
+    "count":1,
+    "trees":
+    {
+        "Fire basic":
+        [
+            {
+                "id":"talent0Canvas",
+                "name":"Fireball",
+                "desc":"Cast a fireball that deals 100 * lvl of damage.",
+                "hasPoints":true,
+                "initPoints":0,
+                "currentPoints":0,
+                "maxPoints":4,
+                "posX":13,
+                "posY":0,
+                "triggersTalent":true,
+                "triggers":["talent1","talent3"],
+                "triggerBy":[],
+                "disabled":false,
+                "transform":"translate3d(240px, 0px, 0px)"
+            },
+            {
+                "id":"talent1Canvas",
+                "name":"Phoeinx",
+                "desc":"Invoke a phoenix that fights with you for 25 seconds. If it dies within that time, the phoenix will revive again.",
+                "hasPoints":true,
+                "initPoints":0,
+                "currentPoints":0,
+                "maxPoints":1,
+                "posX":8,
+                "posY":0,
+                "triggersTalent":true,
+                "triggers":["talent2"],
+                "triggerBy":["talent0Canvas"],
+                "disabled":false,
+                "transform":"translate3d(320px, 160px, 0px)"
+            },
+            {
+                "id":"talent2Canvas",
+                "name":"Pure fire",
+                "desc":"You become the incernation of the flame. All your damage is increased 75% for 15 seconds.",
+                "hasPoints":true,
+                "initPoints":0,
+                "currentPoints":0,
+                "maxPoints":1,
+                "posX":5,
+                "posY":1,
+                "triggersTalent":false,
+                "triggers":[],
+                "triggerBy":["talent3Canvas","talent1Canvas"],
+                "disabled":false,
+                "transform":"translate3d(240px, 320px, 0px)"
+            },
+            {
+                "id":"talent3Canvas",
+                "name":"Burst",
+                "desc":"You burst in flames, dealing 25 * lvl of damage in an area arround you.",
+                "hasPoints":true,
+                "initPoints":0,
+                "currentPoints":0,
+                "maxPoints":2,
+                "posX":5,
+                "posY":0,
+                "triggersTalent":true,
+                "triggers":["talent2"],
+                "triggerBy":["talent0Canvas"],
+                "disabled":false,
+                "transform":"translate3d(160px, 160px, 0px)"
+            }
+        ]
+    }
+}
