@@ -18,10 +18,8 @@ app.use(function (req, res, next) {
 
     // Request headers you wish to allow
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-
-    // Set to true if you need the website to include cookies in the requests sent
-    // to the API (e.g. in case you use sessions)
-    res.setHeader('Access-Control-Allow-Credentials', true);
+    
+    res.setHeader('Access-Control-Allow-Credentials', false);
 
     // Pass to next layer of middleware
     next();
@@ -35,23 +33,11 @@ app.listen(3210, () => console.log('Listening on 3210'));
 
  // Save a talent tree into memory. TODO: Database?
 app.post('/saveTalentTree', jsonParser, function(req, res, next) {
-    if (talentTreeList.count > 5 || !req.body)
-        res.send({
-            result: 'bad',
-            message: talentTreeList.count > 5 ? 'Max. talent trees' : 'No talent tree provided'
-        });
-    else {
+    talentTreeList.trees[req.body.name]= req.body.tree;
 
-        talentTreeList = {...talentTreeList, 
-            count: talentTreeList.count + 1
-        };
+    console.log('%j', talentTreeList);
 
-        talentTreeList.trees[req.body.name]= req.body.tree;
-
-        console.log('%j', talentTreeList);
-
-        res.send({result: 'ok', talentTreeList: talentTreeList})
-    }
+    res.send({result: 'ok', talentTreeList: talentTreeList})
 });
 
 // Get the list of talent trees saved
