@@ -31,11 +31,9 @@ app.listen(3210, () => console.log('Listening on 3210'));
  * PUBLISHED METHODS 
  */
 
- // Save a talent tree into memory. TODO: Database?
+ // Save a talent tree into memory
 app.post('/saveTalentTree', jsonParser, function(req, res, next) {
     talentTreeList.trees[req.body.name]= req.body.tree;
-
-    console.log('%j', talentTreeList);
 
     res.send({result: 'ok', talentTreeList: talentTreeList})
 });
